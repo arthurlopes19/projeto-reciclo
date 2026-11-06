@@ -1,0 +1,192 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ReCiclo · Coleta de lixo e reciclagem</title>
+  <meta name="description" content="Dias e horários da coleta de lixo no Parque Verde e no Bengui, guia de descarte e avisos da coleta." />
+  <meta name="theme-color" content="#1d4a37" />
+  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://unpkg.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co; object-src 'none'; base-uri 'self'; form-action 'self'" />
+  <meta name="referrer" content="strict-origin-when-cross-origin" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%232f6b4f'/><text x='16' y='22' font-size='16' text-anchor='middle' fill='white'>♻</text></svg>" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ===== Cabeçalho ===== -->
+  <header class="header" id="topo">
+    <div class="container header__inner">
+      <a href="#inicio" class="brand" aria-label="ReCiclo - início">
+        <span class="brand__logo"><i data-lucide="recycle"></i></span>
+        <span class="brand__name">Re<span>Ciclo</span></span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Principal">
+        <a href="#inicio" class="nav__link">Início</a>
+        <a href="#calendario" class="nav__link">Calendário</a>
+        <a href="#guia" class="nav__link">Guia</a>
+        <a href="#avisos" class="nav__link">Avisos</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="nav">
+        <i data-lucide="menu"></i>
+      </button>
+    </div>
+  </header>
+
+  <main id="conteudo">
+    <!-- ===== Hero ===== -->
+    <section class="hero" id="inicio">
+      <div class="container hero__inner">
+        <div class="hero__text reveal">
+          <h1>Mantenha nossa cidade <span>limpa e sustentável</span></h1>
+          <p>Descubra quando o caminhão passa no Parque Verde e no Bengui, saiba como separar cada resíduo e fique por dentro dos avisos da coleta. Tudo em um só lugar.</p>
+          <div class="hero__actions">
+            <a href="#calendario" class="btn btn--primary"><i data-lucide="truck"></i> Ver dias de coleta</a>
+            <a href="#guia" class="btn btn--ghost">Como separar o lixo <i data-lucide="arrow-right"></i></a>
+          </div>
+          <ul class="hero__stats">
+            <li><i data-lucide="map-pin"></i><strong>2</strong> regiões atendidas</li>
+            <li><i data-lucide="calendar"></i><strong>Coleta</strong> comum e seletiva</li>
+            <li><i data-lucide="recycle"></i><strong>Guia</strong> de descarte</li>
+          </ul>
+        </div>
+
+        <div class="hero__art reveal" aria-hidden="true">
+          <div class="hero__circle"></div>
+          <div class="hero__card">
+            <span class="hero__card-icon"><i data-lucide="recycle"></i></span>
+            <p>Separe, lave e descarte certo</p>
+            <div class="bins">
+              <span class="bin bin--papel">Papel</span>
+              <span class="bin bin--plastico">Plástico</span>
+              <span class="bin bin--vidro">Vidro</span>
+              <span class="bin bin--metal">Metal</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Calendário ===== -->
+    <section class="section" id="calendario">
+      <div class="container">
+        <span class="tag"><i data-lucide="calendar"></i> Calendário</span>
+        <h2>Dias do caminhão</h2>
+        <p class="section__lead">Escolha sua região e veja os dias e horários da coleta de lixo comum e da coleta seletiva.</p>
+
+        <div class="panel picker">
+          <div class="picker__field">
+            <span class="picker__label" id="regioesLabel">Qual é a sua região?</span>
+            <div class="regioes" id="regioes" role="tablist" aria-labelledby="regioesLabel"></div>
+          </div>
+          <div class="legend">
+            <span><i class="dot dot--comum"></i> Lixo comum (orgânico e rejeitos)</span>
+            <span><i class="dot dot--seletiva"></i> Coleta seletiva (recicláveis)</span>
+          </div>
+        </div>
+
+        <div class="schedule" id="schedule" role="tabpanel" aria-live="polite"></div>
+
+        <div class="passos">
+          <div class="passos__head">
+            <span class="passos__icon"><i data-lucide="leaf"></i></span>
+            <div>
+              <strong>Faça sua parte: 3 passos para descartar certo</strong>
+              <span>Hábitos simples que deixam o bairro mais limpo e ajudam a reciclagem a funcionar.</span>
+            </div>
+          </div>
+          <ol class="passos__lista">
+            <li>
+              <span class="passos__n">1</span>
+              <i data-lucide="split"></i>
+              <p><strong>Separe</strong> os recicláveis (papel, plástico, vidro e metal) do lixo comum.</p>
+            </li>
+            <li>
+              <span class="passos__n">2</span>
+              <i data-lucide="droplets"></i>
+              <p><strong>Limpe</strong> as embalagens com um enxágue rápido e deixe secar.</p>
+            </li>
+            <li>
+              <span class="passos__n">3</span>
+              <i data-lucide="clock"></i>
+              <p><strong>Coloque na calçada</strong> até 1 hora antes da coleta, com o saco bem fechado.</p>
+            </li>
+          </ol>
+          <a href="#guia" class="passos__cta">Não sabe onde jogar algo? Use o guia de descarte <i data-lucide="arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Guia de descarte (novo) ===== -->
+    <section class="section section--soft" id="guia">
+      <div class="container">
+        <span class="tag"><i data-lucide="search"></i> Guia de descarte</span>
+        <h2>Onde jogo isso?</h2>
+        <p class="section__lead">Digite um item e descubra se ele vai para a reciclagem, para o lixo comum ou se precisa de descarte especial.</p>
+
+        <div class="panel guide">
+          <div class="search">
+            <i data-lucide="search"></i>
+            <input id="guiaBusca" type="search" placeholder="Ex.: caixa de pizza, pilha, garrafa de vidro…" autocomplete="off" />
+          </div>
+          <div class="guide__chips" id="guiaSugestoes"></div>
+          <ul class="guide__results" id="guiaResultados" aria-live="polite"></ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Avisos ===== -->
+    <section class="section" id="avisos">
+      <div class="container">
+        <span class="tag"><i data-lucide="bell"></i> Mural</span>
+        <h2>Avisos e dicas</h2>
+        <p class="section__lead">Alterações na coleta, comunicados da prefeitura e dicas para reciclar do jeito certo.</p>
+
+        <div class="chips" id="avisoFiltros" role="group" aria-label="Filtrar avisos"></div>
+        <div class="avisos" id="avisoLista"></div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===== Rodapé ===== -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div>
+        <a href="#inicio" class="brand brand--light">
+          <span class="brand__logo"><i data-lucide="recycle"></i></span>
+          <span class="brand__name">Re<span>Ciclo</span></span>
+        </a>
+        <p class="footer__about">Informação clara sobre coleta de lixo e reciclagem para o Parque Verde e o Bengui.</p>
+      </div>
+
+      <div>
+        <h3>Navegação</h3>
+        <ul class="footer__list footer__list--plain">
+          <li><a href="#inicio">Início</a></li>
+          <li><a href="#calendario">Calendário de coleta</a></li>
+          <li><a href="#guia">Guia de descarte</a></li>
+          <li><a href="#avisos">Avisos e dicas</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="container footer__bottom">
+      <span>© <span id="ano">2026</span> ReCiclo. Todos os direitos reservados.</span>
+      <span>Feito com <i data-lucide="leaf"></i> para a nossa cidade.</span>
+    </div>
+  </footer>
+
+  <button class="to-top" id="toTop" aria-label="Voltar ao topo"><i data-lucide="arrow-up"></i></button>
+
+  <script src="https://unpkg.com/lucide@0.460.0/dist/umd/lucide.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.45.4/dist/umd/supabase.min.js"></script>
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+  <script src="db.js"></script>
+</body>
+</html>
